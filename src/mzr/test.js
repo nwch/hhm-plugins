@@ -1,12 +1,12 @@
-var room = HBInit();
+let room = HBInit();
 
 room.pluginSpec = {
     name: `mzr/test`,
     author: `mzr`,
     version: `1.0.0`,
-    // dependencies: [
-    //     `sav/cron`
-    // ],
+     dependencies: [
+         `sav/cron`
+    ],
     // config: {
     //     text: `default message`
     // }
