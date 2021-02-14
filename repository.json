@@ -1,11 +1,11 @@
 {
     "name": "nwch/hhm-plugins",
     "description": "nwch's HHM plugins.",
-    "author": "nwch",
+    "author": "mzr",
     "config": {
       "path": "src"
     },
     "plugins": [
-      "nwch/test"
+      "mzr/test"
     ]
   }

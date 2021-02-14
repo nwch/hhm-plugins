@@ -1,15 +1,15 @@
 var room = HBInit();
 
 room.pluginSpec = {
-    name: `nwch/test`,
-    author: `nwch`,
+    name: `mzr/test`,
+    author: `mzr`,
     version: `1.0.0`,
-    dependencies: [
-        `sav/cron`
-    ],
-    config: {
-        text: `default message`
-    }
+    // dependencies: [
+    //     `sav/cron`
+    // ],
+    // config: {
+    //     text: `default message`
+    // }
 };
 
-room.onCron10GameSeconds = () => room.sendChat("10 ingame seconds have passed");
+//room.onCron10GameSeconds = () => room.sendChat("10 ingame seconds have passed");
