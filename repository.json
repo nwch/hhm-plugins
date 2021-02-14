@@ -1,0 +1,11 @@
+{
+    "name": "nwch/hhm-plugins",
+    "description": "nwch's HHM plugins.",
+    "author": "nwch",
+    "config": {
+      "path": "src"
+    },
+    "plugins": [
+      "nwch/test"
+    ]
+  }
