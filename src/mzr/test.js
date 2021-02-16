@@ -19,16 +19,18 @@ room.pluginSpec = {
 // });
 
 // room.onPlayerJoin = (player) => room.sendChat("game started NOW");
-room.onCron10GameSeconds = () => room.sendChat("10 ingame seconds have passed");
+// room.onCron10GameSeconds = () => room.sendChat("10 ingame seconds have passed");
 
 function onPlayerJoin(player) {
-    room.setPlayerTeam(player.id, 1);
     room.sendChat(`player moved to red`);
     room.sendAnnouncement(`off we go`, player.id, { prefix: [`CMD`] });
+    room.setPlayerTeam(player.id, 1);
     // room.sendChat(`zonk?`);
 }
 
-room.onRoomLink = function onRoomLink() {
-    room.onPlayerJoin = onPlayerJoin;
-    room.onGameStart = () => room.sendChat(`global zonk?!`);
-}
+room.onPlayerJoin = onPlayerJoin;
+room.onGameStart = () => room.sendChat(`global zonk?!`);
+
+// room.onRoomLink = function onRoomLink() {
+    
+// }
