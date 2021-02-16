@@ -6,6 +6,6 @@
       "path": "src"
     },
     "plugins": [
-      "mzr/test"
+      "mzr/test1"
     ]
   }
