@@ -3,7 +3,7 @@ let room = HBInit();
 room.pluginSpec = {
     name: `mzr/test`,
     author: `mzr`,
-    version: `2.1.8`,
+    version: `2.1.9`,
      dependencies: [
          //`sav/cron`,
          `sav/chat`,
@@ -25,12 +25,14 @@ room.pluginSpec = {
 
 // room.onPlayerJoin = onPlayerJoin;
 
-room.onGameStart = () => room.sendChat(`global zonk?!`);
+
 
 function onPlayerJoinHandler(player) {
     room.sendChat("game started NOW!");
+    room.setPlayerTeam(player.id, 1);
 }
 
 room.onRoomLink = function onRoomLink() {
     room.onPlayerJoin = onPlayerJoinHandler;
+    room.onGameStart = () => room.sendChat(`global zonk?!`);
 }
