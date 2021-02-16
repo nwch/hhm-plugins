@@ -28,7 +28,7 @@ room.pluginSpec = {
 
 
 function onPlayerJoinHandler(player) {
-    room.sendChat("game started NOW!");
+    room.sendChat("game started NOOOW");
     room.setPlayerTeam(player.id, 1);
 }
 
