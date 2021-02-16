@@ -1,7 +1,7 @@
 let room = HBInit();
 
 room.pluginSpec = {
-    name: `mzr/test1`,
+    name: `mzr/test2`,
     author: `mzr`,
     version: `2.2.10`,
      dependencies: [
@@ -27,7 +27,7 @@ room.pluginSpec = {
 
 function onPlayerJoinHandler(player) {
     room.sendChat("game started NOOOW");
-    //room.setPlayerTeam(player.id, 1);
+    room.setPlayerTeam(player.id, 1);
 }
 
 room.onRoomLink = function onRoomLink() {
