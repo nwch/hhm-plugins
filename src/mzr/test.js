@@ -3,9 +3,9 @@ let room = HBInit();
 room.pluginSpec = {
     name: `mzr/test`,
     author: `mzr`,
-    version: `1.0.0`,
+    version: `1.0.1`,
      dependencies: [
-         //`sav/cron`,
+         `sav/cron`,
          `sav/chat`,
          `sav/players`,
     ],
@@ -19,7 +19,7 @@ room.pluginSpec = {
 // });
 
 // room.onPlayerJoin = (player) => room.sendChat("game started NOW");
-// room.onCron10GameSeconds = () => room.sendChat("10 ingame seconds have passed");
+room.onCron10GameSeconds = () => room.sendChat("10 ingame seconds have passed");
 
 function onPlayerJoin(player) {
     room.setPlayerTeam(player.id, 1);
