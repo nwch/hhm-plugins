@@ -18,5 +18,15 @@ room.pluginSpec = {
 //     this.sendChat(player.name + ' joined hahaha')
 // });
 
-room.onPlayerJoin = () => room.sendChat("game started NOW");
+// room.onPlayerJoin = (player) => room.sendChat("game started NOW");
 // room.onCron10GameSeconds = () => room.sendChat("10 ingame seconds have passed");
+
+function onPlayerJoin(player) {
+    room.sendAnnouncement(`off we go`, player.id, { prefix: [`CMD`] });
+    room.sendChat(`zonk?`);
+}
+
+room.onRoomLink = function onRoomLink() {
+    room.onPlayerJoin = onPlayerJoin;
+    room.onGameStart = () => room.sendChat(`zonk?!`);
+}
