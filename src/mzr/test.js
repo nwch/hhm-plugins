@@ -3,15 +3,15 @@ let room = HBInit();
 room.pluginSpec = {
     name: `mzr/test`,
     author: `mzr`,
-    version: `2.1.7`,
+    version: `2.1.8`,
      dependencies: [
          //`sav/cron`,
          `sav/chat`,
          `sav/players`,
     ],
-    // config: {
-    //     text: `default message`
-    // }
+    config: {
+        mymess: `default message`
+    }
 };
 
 // room.onCron10GameSeconds = () => room.sendChat("10 ingame seconds have passed");
@@ -24,10 +24,11 @@ room.pluginSpec = {
 // }
 
 // room.onPlayerJoin = onPlayerJoin;
-// room.onGameStart = () => room.sendChat(`global zonk?!`);
+
+room.onGameStart = () => room.sendChat(`global zonk?!`);
 
 function onPlayerJoinHandler(player) {
-    room.sendChat("game started NOW!" + player.id);
+    room.sendChat("game started NOW!");
 }
 
 room.onRoomLink = function onRoomLink() {
