@@ -3,15 +3,13 @@ let room = HBInit();
 room.pluginSpec = {
     name: `mzr/test`,
     author: `mzr`,
-    version: `2.1.10`,
+    version: `2.2.10`,
      dependencies: [
          //`sav/cron`,
          `sav/chat`,
          `sav/players`,
     ],
-    config: {
-        mymess: `default message`
-    }
+    config: {}
 };
 
 // room.onCron10GameSeconds = () => room.sendChat("10 ingame seconds have passed");
