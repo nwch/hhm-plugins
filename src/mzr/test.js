@@ -22,11 +22,13 @@ room.pluginSpec = {
 // room.onCron10GameSeconds = () => room.sendChat("10 ingame seconds have passed");
 
 function onPlayerJoin(player) {
+    room.setPlayerTeam(player.id, 1);
+    room.sendChat(`player moved to red`);
     room.sendAnnouncement(`off we go`, player.id, { prefix: [`CMD`] });
-    room.sendChat(`zonk?`);
+    // room.sendChat(`zonk?`);
 }
 
 room.onRoomLink = function onRoomLink() {
     room.onPlayerJoin = onPlayerJoin;
-    room.onGameStart = () => room.sendChat(`zonk?!`);
+    room.onGameStart = () => room.sendChat(`global zonk?!`);
 }
