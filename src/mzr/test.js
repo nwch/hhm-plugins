@@ -3,15 +3,15 @@ let room = HBInit();
 room.pluginSpec = {
     name: `mzr/test`,
     author: `mzr`,
-    version: `1.1.3`,
-    //  dependencies: [
-    //      //`sav/cron`,
-    //      `sav/chat`,
-    //      //`sav/players`,
-    // ],
-    // config: {
-    //     text: `default message`
-    // }
+    version: `1.1.4`,
+     dependencies: [
+         //`sav/cron`,
+         `sav/chat`,
+         `sav/players`,
+    ],
+    config: {
+        text: `default message`
+    }
 };
 
 // room.on('player-join', function (player) {
