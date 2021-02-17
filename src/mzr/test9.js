@@ -1,7 +1,7 @@
 let room = HBInit();
 
 room.pluginSpec = {
-    name: `mzr/test8`,
+    name: `mzr/test9`,
     author: `mzr`,
     version: `1.0.0`,
      dependencies: [
@@ -50,10 +50,21 @@ function chooseTeam(player) {
     let reds = teams[1];
     let blues = teams[2];
 
-    if (blues.length > reds.length) {
+    if (blues.length >= reds.length) {
         joinRed(player.id);
     } else {        
         joinBlue(player.id);
+    }
+}
+
+function fixTeams() {
+    let teams = getPlayerListByTeam();
+    if ((teams[1].length + 1) > teams[2].length) {
+        let lastPlayer = teams[1].pop();
+        joinBlue(lastPlayer.id);
+    } else if ((teams[2].length + 1) > teams[1].length) {
+        let lastPlayer = teams[2].pop();
+        joinRed(lastPlayer.id);
     }
 }
 
@@ -76,12 +87,22 @@ function onPlayerJoinHandler(player) {
     // }
 }
 
+function onGameStopHandler() {
+    room.sendChat("game stopped");
+    room.startGame();
+}
+
+function onPlayerLeaveHandler() {
+    room.sendChat("player left");
+}
+
 room.onCommand_afk = {
     function: (player) => {
         if (player.team === 0) {
             chooseTeam(player);
         } else {
             room.setPlayerTeam(player.id, 0);
+            fixTeams();
         }        
     },
     data: {
@@ -92,6 +113,8 @@ room.onCommand_afk = {
 }
 
 room.onRoomLink = function onRoomLink() {
+    room.onGameStop = onGameStopHandler;
     room.onPlayerJoin = onPlayerJoinHandler;
+    room.onPlayerLeave = onPlayerLeaveHandler;
     //room.onGameStart = () => room.sendChat(`global zonk?!`);
 }
