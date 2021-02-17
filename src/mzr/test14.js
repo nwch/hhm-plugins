@@ -1,7 +1,7 @@
 let room = HBInit();
 
 room.pluginSpec = {
-    name: `mzr/test12`,
+    name: `mzr/test14`,
     author: `mzr`,
     version: `1.0.0`,
      dependencies: [
@@ -60,10 +60,12 @@ function chooseTeam(player) {
 function fixTeams() {
     let teams = getPlayerListByTeam();
 
-    if ((teams[1].length + 1) > teams[2].length) {
+    room.sendChat("fix red: " + teams[1].length + " blue: " + teams[2].length + "specs: " + teams[0].length);
+
+    if (teams[1].length > (teams[2].length + 1)) {
         let lastPlayer = teams[1].pop();
         joinBlue(lastPlayer.id);
-    } else if ((teams[2].length + 1) > teams[1].length) {
+    } else if (teams[2].length > (teams[1].length + 1)) {
         let lastPlayer = teams[2].pop();
         joinRed(lastPlayer.id);
     }
@@ -75,6 +77,8 @@ function fixTeams() {
 
 function isEnoughPlayers() {
     let teams = getPlayerListByTeam();
+
+    room.sendChat("enough red: " + teams[1].length + " blue: " + teams[2].length + "specs: " + teams[0].length);
 
     return teams[1].length > 0 && teams[2].length > 0;
 }
