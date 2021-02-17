@@ -1,7 +1,7 @@
 let room = HBInit();
 
 room.pluginSpec = {
-    name: `mzr/test3`,
+    name: `mzr/test4`,
     author: `mzr`,
     version: `1.0.0`,
      dependencies: [
