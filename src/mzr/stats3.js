@@ -1,7 +1,7 @@
 let room = HBInit();
 
 room.pluginSpec = {
-    name: `mzr/stats2`,
+    name: `mzr/stats3`,
     author: `mzr`,
     version: `1.0.0`,
      dependencies: [
@@ -37,8 +37,6 @@ function onTeamGoalHandler(teamId) {
 };
   
 function addGoal(teamId) {
-    scores = room.getScores();
-    output = '' + scores.red + '-' + scores.blue + ' - ';
     if (lastTouch.scorer.team !== teamId) {
       output = output + 'Own goal by: ' + lastTouch.scorer.name;
     } else {
