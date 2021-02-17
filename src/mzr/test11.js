@@ -1,7 +1,7 @@
 let room = HBInit();
 
 room.pluginSpec = {
-    name: `mzr/test10`,
+    name: `mzr/test11`,
     author: `mzr`,
     version: `1.0.0`,
      dependencies: [
@@ -59,6 +59,7 @@ function chooseTeam(player) {
 
 function fixTeams() {
     let teams = getPlayerListByTeam();
+
     if ((teams[1].length + 1) > teams[2].length) {
         let lastPlayer = teams[1].pop();
         joinBlue(lastPlayer.id);
@@ -68,10 +69,24 @@ function fixTeams() {
     }
 }
 
+function isEnoughPlayers() {
+    let teams = getPlayerListByTeam();
+
+    return teams[1].length > 0 && teams[2].length > 0;
+}
+
+function isGameRunning() {
+    return !!room.getScores();
+}
+
 function onPlayerJoinHandler(player) {
     //room.sendChat("game started NOW7");
     room.sendAnnouncement("It's a first try to bring longbounce back. New functions will be added step by step.", player.id, 0x83b7b3);
     chooseTeam(player);
+
+    if (!isGameRunning() && isEnoughPlayers()){
+        room.startGame();
+    }
 }
 
 function onGameStopHandler() {
