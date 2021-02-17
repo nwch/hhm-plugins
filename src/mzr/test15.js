@@ -1,7 +1,7 @@
 let room = HBInit();
 
 room.pluginSpec = {
-    name: `mzr/test14`,
+    name: `mzr/test15`,
     author: `mzr`,
     version: `1.0.0`,
      dependencies: [
@@ -98,7 +98,9 @@ function onPlayerJoinHandler(player) {
 }
 
 function onGameStopHandler() {
-    room.startGame();
+    if (isEnoughPlayers()) {
+        room.startGame();
+    }
 }
 
 function onPlayerLeaveHandler() {
