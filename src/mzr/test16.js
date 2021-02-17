@@ -1,7 +1,7 @@
 let room = HBInit();
 
 room.pluginSpec = {
-    name: `mzr/test15`,
+    name: `mzr/test16`,
     author: `mzr`,
     version: `1.0.0`,
      dependencies: [
@@ -87,14 +87,18 @@ function isGameRunning() {
     return !!room.getScores();
 }
 
-function onPlayerJoinHandler(player) {
-    //room.sendChat("game started NOW7");
-    room.sendAnnouncement("It's a first try to bring longbounce back. New functions will be added step by step.", player.id, 0x83b7b3);
+function tryAddPlayerToTeam(player) {
     chooseTeam(player);
 
     if (!isGameRunning() && isEnoughPlayers()){
         room.startGame();
     }
+}
+
+function onPlayerJoinHandler(player) {
+    //room.sendChat("game started NOW7");
+    room.sendAnnouncement("It's a first try to bring longbounce back. New functions will be added step by step.", player.id, 0x83b7b3);
+    tryAddPlayerToTeam(player);
 }
 
 function onGameStopHandler() {
@@ -110,7 +114,7 @@ function onPlayerLeaveHandler() {
 room.onCommand_afk = {
     function: (player) => {
         if (player.team === 0) {
-            chooseTeam(player);
+            tryAddPlayerToTeam(player);
         } else {
             room.setPlayerTeam(player.id, 0);
             fixTeams();
