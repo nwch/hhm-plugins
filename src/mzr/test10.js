@@ -1,7 +1,7 @@
 let room = HBInit();
 
 room.pluginSpec = {
-    name: `mzr/test9`,
+    name: `mzr/test10`,
     author: `mzr`,
     version: `1.0.0`,
      dependencies: [
@@ -69,31 +69,17 @@ function fixTeams() {
 }
 
 function onPlayerJoinHandler(player) {
-    room.sendChat("game started NOW7");
-    
+    //room.sendChat("game started NOW7");
+    room.sendAnnouncement("It's a first try to bring longbounce back. New functions will be added step by step.", player.id, 0x83b7b3);
     chooseTeam(player);
-    // if (reds.length === blues.length) {
-    //     if (lastDraw === 1) {
-    //         joinBlue(player.id);
-    //         lastDraw = 2;
-    //     } else {
-    //         joinRed(player.id);
-    //         lastDraw = 1;
-    //     }
-    // } else if (reds.length > blues.length) {
-    //      joinRed(player.id);
-    // } else {
-    //     joinBlue(player.id);
-    // }
 }
 
 function onGameStopHandler() {
-    room.sendChat("game stopped");
     room.startGame();
 }
 
 function onPlayerLeaveHandler() {
-    room.sendChat("player left");
+    fixTeams();
 }
 
 room.onCommand_afk = {
@@ -116,5 +102,4 @@ room.onRoomLink = function onRoomLink() {
     room.onGameStop = onGameStopHandler;
     room.onPlayerJoin = onPlayerJoinHandler;
     room.onPlayerLeave = onPlayerLeaveHandler;
-    //room.onGameStart = () => room.sendChat(`global zonk?!`);
 }
