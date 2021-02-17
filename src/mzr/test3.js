@@ -23,18 +23,12 @@ room.pluginSpec = {
 
 // room.onPlayerJoin = onPlayerJoin;
 
-let reds = [];
-let blues = [];
-let lastDraw = 1;
-
 function joinRed(playerId) {
     room.setPlayerTeam(playerId, 1);
-    reds.push(playerId);
 }
 
 function joinBlue(playerId) {
     room.setPlayerTeam(playerId, 2);
-    blues.push(playerId);
 }
 
 function getPlayerListByTeam() {
