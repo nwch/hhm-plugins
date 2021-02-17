@@ -1,7 +1,7 @@
 let room = HBInit();
 
 room.pluginSpec = {
-    name: `mzr/test6`,
+    name: `mzr/test7`,
     author: `mzr`,
     version: `1.0.0`,
      dependencies: [
@@ -23,6 +23,8 @@ room.pluginSpec = {
 
 // room.onPlayerJoin = onPlayerJoin;
 
+let lastDraw = 1;
+
 function joinRed(playerId) {
     room.setPlayerTeam(playerId, 1);
 }
@@ -41,18 +43,17 @@ function getPlayerListByTeam() {
     return results;
 }
 
-// let lastDraw = 1;
 function onPlayerJoinHandler(player) {
-    room.sendChat("game started NOW4");
+    room.sendChat("game started NOW7");
     let teams = getPlayerListByTeam();
 
     let reds = teams[1];
     let blues = teams[2];
 
-    if (reds.length > blues.length) {
-        joinRed(player.id);
-    } else {
+    if (blues.length > reds.length) {
         joinBlue(player.id);
+    } else {        
+        joinRed(player.id);
     }
 
     // if (reds.length === blues.length) {
