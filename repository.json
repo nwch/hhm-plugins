@@ -7,6 +7,6 @@
     },
     "plugins": [
       "mzr/test16",
-      "mzr/stats1"
+      "mzr/stats2"
     ]
   }
