@@ -1,7 +1,7 @@
 let room = HBInit();
 
 room.pluginSpec = {
-    name: `mzr/test11`,
+    name: `mzr/test12`,
     author: `mzr`,
     version: `1.0.0`,
      dependencies: [
@@ -66,6 +66,10 @@ function fixTeams() {
     } else if ((teams[2].length + 1) > teams[1].length) {
         let lastPlayer = teams[2].pop();
         joinRed(lastPlayer.id);
+    }
+
+    if (isGameRunning() && !isEnoughPlayers()) {
+        room.stopGame();
     }
 }
 
