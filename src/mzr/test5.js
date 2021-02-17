@@ -1,7 +1,7 @@
 let room = HBInit();
 
 room.pluginSpec = {
-    name: `mzr/test4`,
+    name: `mzr/test5`,
     author: `mzr`,
     version: `1.0.0`,
      dependencies: [
@@ -41,27 +41,27 @@ function getPlayerListByTeam() {
     return results;
 }
 
-let lastDraw = 1;
+// let lastDraw = 1;
 function onPlayerJoinHandler(player) {
-    room.sendChat("game started NOW3");
-    let teams = getPlayerListByTeam();
+    room.sendChat("game started NOW4");
+    // let teams = getPlayerListByTeam();
 
-    let reds = teams[1];
-    let blues = teams[2];
+    // let reds = teams[1];
+    // let blues = teams[2];
 
-    if (reds.length === blues.length) {
-        if (lastDraw === 1) {
-            joinBlue(player.id);
-            lastDraw = 2;
-        } else {
-            joinRed(player.id);
-            lastDraw = 1;
-        }
-    } else if (reds.length > blues.length) {
-         joinRed(player.id);
-    } else {
-        joinBlue(player.id);
-    }
+    // if (reds.length === blues.length) {
+    //     if (lastDraw === 1) {
+    //         joinBlue(player.id);
+    //         lastDraw = 2;
+    //     } else {
+    //         joinRed(player.id);
+    //         lastDraw = 1;
+    //     }
+    // } else if (reds.length > blues.length) {
+    //      joinRed(player.id);
+    // } else {
+    //     joinBlue(player.id);
+    // }
 }
 
 room.onRoomLink = function onRoomLink() {
