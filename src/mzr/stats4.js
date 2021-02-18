@@ -1,7 +1,7 @@
 let room = HBInit();
 
 room.pluginSpec = {
-    name: `mzr/stats3`,
+    name: `mzr/stats4`,
     author: `mzr`,
     version: `1.0.0`,
      dependencies: [
@@ -29,24 +29,25 @@ function updateLastTouch(player) {
 }
 
 function onTeamGoalHandler(teamId) {
-    room.sendAnnouncement(addGoal(teamId));
+    room.sendAnnouncement(createGoalMessage(teamId));
     lastTouch = {
         scorer: null,
         assister: null,
     };
 };
   
-function addGoal(teamId) {
+function createGoalMessage(teamId) {
+    let output = null;
     if (lastTouch.scorer.team !== teamId) {
-      output = output + 'Own goal by: ' + lastTouch.scorer.name;
+        output = 'Own goal by: ' + lastTouch.scorer.name;
     } else {
-      output = output + 'Goal by: ' + lastTouch.scorer.name;
+        output = 'Goal by: ' + lastTouch.scorer.name;
     }
   
     if (lastTouch.assister !== null) {
-      if (lastTouch.assister.team === teamId) {
-        output = output + ', Assist by: ' + lastTouch.assister.name;
-      }
+        if (lastTouch.assister.team === teamId) {
+            output = output + ', Assist by: ' + lastTouch.assister.name;
+        }
     }
 
     return output;
